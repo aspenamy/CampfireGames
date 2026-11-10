@@ -3,6 +3,7 @@
 ## Notes: Cozy little puzzle and card games in a small window, for fishing, flights and other idle time.
 ## Author: Astreae
 ## Version: 0.1.0
+## X-Curse-Project-ID: 1795388
 ## IconTexture: Interface\AddOns\CampfireGames\media\icons\downtime
 ## AddonCompartmentFunc: Downtime_OnAddonCompartmentClick
 ## X-License: All Rights Reserved
