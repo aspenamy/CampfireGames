@@ -1,0 +1,10 @@
+package-as: CampfireGames
+
+manual-changelog: CHANGELOG.md
+
+ignore:
+  - README.md
+  - CHANGELOG.md
+  - build.ps1
+  - tools
+  - dist

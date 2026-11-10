@@ -1,0 +1,5 @@
+<Bindings>
+  <Binding name="DOWNTIME_TOGGLE" header="DOWNTIME" category="ADDONS">
+    Downtime_Toggle()
+  </Binding>
+</Bindings>

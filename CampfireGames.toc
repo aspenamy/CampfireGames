@@ -1,0 +1,32 @@
+## Interface: 16001
+## Title: Campfire Games
+## Notes: Cozy little puzzle and card games in a small window, for fishing, flights and other idle time.
+## Author: Astreae
+## Version: 0.1.0
+## IconTexture: Interface\AddOns\CampfireGames\media\icons\downtime
+## AddonCompartmentFunc: Downtime_OnAddonCompartmentClick
+## X-License: All Rights Reserved
+## SavedVariables: DowntimeDB
+
+Core.lua
+Theme.lua
+Trophies.lua
+Help.lua
+games\SudokuLogic.lua
+games\Sudoku.lua
+games\Gemcutter.lua
+games\Fireflies.lua
+games\Solitaire.lua
+games\DigSite.lua
+games\Lanterns.lua
+games\Slider.lua
+games\RuneLock.lua
+games\Pairs.lua
+games\QuillWords.lua
+games\Quill.lua
+games\Tapestry.lua
+games\Ricochet.lua
+games\Chimes.lua
+games\Pegs.lua
+games\Teahouse.lua
+Window.lua
