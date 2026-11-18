@@ -11,7 +11,7 @@ Open it with `/campfire`, `/games`, the minimap button, or a key binding
 - **Sudoku**: easy, medium, hard and a daily puzzle, with notes and undo
 - **Gemcutter**: swap gems to match three or more
 - **Fireflies**: link glowing lights of one color, close loops to catch them all, and play through levels
-- **Solitaire**: classic patience, draw 1 or draw 3
+- **Solitaire**: Klondike (draw 1 or 3, with Standard or Vegas scoring), Spider (1, 2 or 4 suits), Free Cell, Pyramid and Tri Peaks
 - **Dig Site**: dig up the site without setting off the traps
 - **Sliding Puzzle**: slide the tiles back into a zone map
 - **Lanterns**: light every lantern

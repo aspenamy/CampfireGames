@@ -75,6 +75,11 @@ ns.TROPHIES = {
   { "sol1", "solitaire", "Patience Rewarded", "Win a game of Solitaire.", function() return (S("solitaire").won or 0) >= 1 end },
   { "sol10", "solitaire", "Card Sharp", "Win 10 games of Solitaire.", function() return (S("solitaire").won or 0) >= 10 end },
   { "solfast", "solitaire", "Quick Shuffle", "Win Solitaire in under five minutes.", function() return (Low(S("solitaire").best_draw1, S("solitaire").best_draw3) or 9e9) < 300 end },
+  { "spider1", "solitaire", "Web Spinner", "Win a game of Spider.", function() return (Low(S("solitaire").best_spider1, S("solitaire").best_spider2, S("solitaire").best_spider4)) ~= nil end },
+  { "spider4", "solitaire", "Eight Legs, Four Suits", "Win Spider with four suits.", function() return S("solitaire").best_spider4 ~= nil end },
+  { "freecell1", "solitaire", "Room to Breathe", "Win a game of Free Cell.", function() return S("solitaire").best_freecell ~= nil end },
+  { "pyramid1", "solitaire", "Stone by Stone", "Clear a Pyramid.", function() return S("solitaire").best_pyramid ~= nil end },
+  { "tripeaks1", "solitaire", "Over the Peaks", "Clear all three peaks in Tri Peaks.", function() return S("solitaire").best_tripeaks ~= nil end },
 
   { "dig1", "digsite", "Amateur Archaeologist", "Clear a dig site.", function() return (S("digsite").won or 0) >= 1 end },
   { "diglarge", "digsite", "Grand Excavation", "Clear a Large dig site.", function() return S("digsite").best_large ~= nil end },

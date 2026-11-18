@@ -134,10 +134,32 @@ local function ShowPage(name)
   ns.helpPanel:Hide()
   ns.helpButton:SetShown(game ~= nil and ns.HELP ~= nil and ns.HELP[name] ~= nil)
   if ns.helpButton.TryClone and ns.helpButton:IsShown() then ns.helpButton:TryClone() end
+  frame.gameW = nil
+  ns.SetGameWidth(game and game.Width and game.Width() or ns.GAME_W)
   if old then ns.Sound("page") end
   ns.UpdateKeyboard()
 end
 ns.ShowPage = ShowPage
+
+-- A game can ask for a wider table (game.Width() in its RegisterGame call);
+-- the window grows to the right and the rest of the chrome follows.
+function ns.SetGameWidth(w)
+  w = w or ns.GAME_W
+  if not frame or frame.gameW == w then return end
+  frame.gameW = w
+  local ww = w + PAD * 2
+  frame:SetSize(ww, WIN_H)
+  if frame.nav then frame.nav:SetWidth(ww - 62 - PAD) end
+  if frame.banner then frame.banner:SetWidth(ww - 40) end
+  if current and pages[current] then pages[current]:SetWidth(w) end
+  ns.helpPanel:SetWidth(w)
+  ns.helpText:SetWidth(w - 32)
+  local n, x0, x1 = #lights, 70, ww - 14
+  for i, l in ipairs(lights) do
+    l.tex:ClearAllPoints()
+    l.tex:SetPoint("CENTER", frame, "TOPLEFT", x0 + (i - 1) * ((x1 - x0) / (n - 1)), -24 - (l.sag or 0))
+  end
+end
 
 local function NewPage(name)
   local p = CreateFrame("Frame", nil, frame)
@@ -673,7 +695,7 @@ local function BuildFrame()
     d:SetSize(10, 10)
     d:SetPoint("CENTER", frame, "TOPLEFT", x, -24 - sag)
     d:SetVertexColor(C.blue[1], C.blue[2], C.blue[3], 0.6)
-    lights[i] = { tex = d, phase = math.random() * 6.28, speed = 0.6 + math.random() * 0.8 }
+    lights[i] = { tex = d, phase = math.random() * 6.28, speed = 0.6 + math.random() * 0.8, sag = sag }
   end
   function ns.UpdateLights()
     for _, l in ipairs(lights) do l.tex:SetShown(ns.db.lights) end
@@ -714,6 +736,7 @@ local function BuildFrame()
     local ok = pcall(function()
       local bar = CreateFrame("Frame", "DowntimeNavBar", nav, "NavBarTemplate")
       bar:SetPoint("TOPLEFT")
+      bar:SetPoint("BOTTOMRIGHT")
       bar:SetSize(NAV_W, NAV_H)
       NavBar_Initialize(bar, "NavButtonTemplate", { name = "Games", OnClick = HomeClick }, bar.home, bar.overflow)
       -- Blizzard sized the home button for "Home"; fit it to "Games".
@@ -837,6 +860,7 @@ local function BuildFrame()
   hOk:SetScript("OnClick", function() helpPanel:Hide() end)
   helpPanel:Hide()
   ns.helpPanel = helpPanel
+  ns.helpText = hText
 
   local helpButton = UI.SearchButton(frame, function()
     local g = currentGame
@@ -952,7 +976,9 @@ local function BuildFrame()
   end)
 
   -- "Trophy earned" banner across the top of the window.
+  frame.nav = nav
   local banner = CreateFrame("Frame", nil, frame)
+  frame.banner = banner
   banner:SetSize(WIN_W - 40, 46)
   banner:SetPoint("TOP", 0, -30)
   banner:SetFrameLevel(frame:GetFrameLevel() + 320)

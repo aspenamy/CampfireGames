@@ -7,6 +7,7 @@
 local _, ns = ...
 
 ns.HELP = {
+  solitaire = "",
   sudoku = "Fill the grid so every row, column and 3x3 box has the numbers 1 to 9 once each.\n\n"
     .. "Click a cell, then a number. With a cell picked you can also type 1-9, use the arrow keys, and press Esc to let go.\n\n"
     .. "Notes pencils in small numbers (Shift+number does the same). Right-click a cell to clear it.\n\n"
@@ -22,9 +23,7 @@ ns.HELP = {
     .. "Catch 6 or more in a move, twice in a row, for a glow streak that multiplies your score.\n\n"
     .. "Levels: reach the target score by your last move to pass. Fill the goals under the board for big score bonuses. Later levels bring dewdrops, twin lights, cobwebs and seeds, each explained when it first appears. 30 Moves is for a high score, and Relaxed has no limit.",
 
-  solitaire = "Build each suit up from Ace to King on the four piles at the top right.\n\n"
-    .. "On the table, stack cards down in alternating colors. Only a King can go in an empty space.\n\n"
-    .. "Drag a card to where it goes, or click it and then click the spot. Click a card twice to send it to the best spot, or right-click to send it up to its suit. Click the deck to draw.",
+  -- solitaire: each Solitaire game sets its own help (games/Solitaire*.lua).
 
   digsite = "Dig every safe square without setting off a trap. Your first dig is always safe.\n\n"
     .. "A number tells you how many traps touch that square, counting diagonals.\n\n"
